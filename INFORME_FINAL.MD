@@ -1,25 +1,26 @@
-ar en celdas de Markdown al final de tu archivo:
-📊 Informe Final: Análisis de Evasión de Clientes (Churn) - TelecomX LATAM
+📊 Informe de Análisis de Evasión de Clientes (Churn) - TelecomX LATAM
 🔹 1. Introducción
-El objetivo de este proyecto es identificar los factores críticos que provocan que los clientes abandonen los servicios de TelecomX. La evasión de clientes (Churn) no solo representa una pérdida de ingresos directos, sino que incrementa los costos de adquisición de nuevos usuarios. Buscamos responder: ¿Quiénes se van, cuándo se van y por qué lo hacen?
+El objetivo principal de este análisis es entender los motivos por los cuales los clientes de TelecomX deciden cancelar sus servicios (Churn). La retención de clientes es crítica en el sector de telecomunicaciones, ya que adquirir un nuevo cliente es significativamente más costoso que mantener uno actual. A través de la ciencia de datos, buscamos identificar patrones de comportamiento que permitan a la empresa tomar acciones proactivas.
 🔹 2. Limpieza y Tratamiento de Datos
-Para garantizar un análisis preciso, realizamos las siguientes transformaciones técnicas:
-Traducción y Estandarización: Renombramos las 21 columnas al español y normalizamos los textos (minúsculas y sin espacios) para evitar errores de procesamiento.
-Corrección de Tipos: La columna Cargo_Total se convirtió de texto a numérico, gestionando valores nulos en clientes nuevos (antigüedad 0).
-Codificación Binaria: Transformamos variables categóricas (Abandono, Tiene_Pareja, etc.) en formato numérico (0 y 1) para permitir cálculos estadísticos y correlaciones.
-Ingeniería de Variables: Creamos la métrica Cuentas_Diarias para entender el impacto del gasto diario en la psicología de retención del cliente.
-🔹 3. Análisis Exploratorio de Datos (Insights Visuales)
-Tras visualizar los datos, identificamos patrones claros:
-Distribución del Churn: Aproximadamente el 26.5% de la base de clientes ha abandonado el servicio.
-El Factor Contrato: Los clientes con contrato "Mes a mes" presentan una tasa de fuga drásticamente superior a los contratos de 1 o 2 años.
-Sensibilidad al Precio: Los gráficos de densidad (KDE) muestran que los clientes que se van tienen Cargos Mensuales más altos (picos por encima de los $70-$80) en comparación con los clientes leales.
-Punto Crítico de Permanencia: Existe una fuga masiva en los primeros 6 meses de servicio, lo que indica una falla en la etapa de "Onboarding" o satisfacción inicial.
+Para asegurar la integridad del análisis, se realizaron transformaciones profundas en el conjunto de datos:
+Traducción y Estandarización: Se renombraron las 21 columnas originales al español y se normalizaron los textos eliminando espacios en blanco (strip()) y convirtiendo todo a minúsculas para evitar duplicidad de categorías.
+Corrección de Tipos de Datos:
+La columna Cargo_Total se transformó de texto a numérico (float), gestionando valores nulos resultantes de clientes con 0 meses de antigüedad.
+Se crearon variables derivadas como Cuentas_Diarias, dividiendo el cargo mensual por 30 para entender el impacto del gasto diario.
+Codificación Binaria: Se transformaron variables de texto ("Sí"/"No") en valores numéricos (1/0). Esto permitió realizar operaciones matemáticas y correlaciones que antes eran imposibles.
+Manejo de Valores Faltantes: Se identificaron y corrigieron errores de mapeo que generaban valores nulos (NaN), asegurando una base de datos 100% limpia para graficar.
+🔹 3. Análisis Exploratorio de Datos (EDA)
+A través de las visualizaciones generadas, se identificaron los siguientes hallazgos:
+Tasa de Abandono: La proporción de evasión se sitúa cerca del 26.5%. Aunque la mayoría permanece, el grupo que se va es lo suficientemente grande como para impactar la rentabilidad.
+Antigüedad Crítica: Los histogramas muestran que el riesgo de abandono es máximo en los primeros 6 meses. Si un cliente supera el primer año, la probabilidad de que se quede aumenta drásticamente.
+Impacto Económico: Los clientes que cancelan el servicio tienden a tener Cargos Mensuales más altos que el promedio. Existe una "barrera de precio" donde el cliente empieza a percibir que el servicio no vale lo que paga.
+Variables Categóricas: Los contratos mes a mes y los métodos de pago manuales (como el cheque electrónico) están fuertemente asociados con la evasión.
 🔹 4. Conclusiones e Insights
-Precio vs. Lealtad: El abandono no es aleatorio; está altamente correlacionado con facturas elevadas y falta de servicios de valor agregado (como Soporte Técnico o Seguridad Online).
-Métodos de Pago: Los clientes que utilizan métodos de pago manuales (como Cheque Electrónico) tienden a irse más que aquellos con cobros automáticos.
-Servicios Digitales: Los clientes con Fibra Óptica tienen mayor tasa de Churn que los de DSL, posiblemente debido a expectativas no cumplidas de velocidad o estabilidad.
+El Contrato es el Predictor #1: Los clientes sin compromiso a largo plazo (contrato mensual) son los más propensos a irse ante cualquier inconveniente o oferta de la competencia.
+Fuga Temprana: La empresa está fallando en retener a los nuevos usuarios. El "periodo de luna de miel" del servicio dura menos de un semestre para 1 de cada 4 clientes.
+Servicios de Apoyo: Los clientes que cuentan con servicios adicionales como Soporte Técnico o Seguridad Online muestran una tasa de abandono significativamente menor, lo que indica que estos servicios generan "fricción positiva" para quedarse.
 🔹 5. Recomendaciones Estratégicas
-Plan de Retención Temprana: Implementar un programa de fidelización (descuentos o beneficios) específicamente para clientes en sus primeros 3 a 6 meses.
-Incentivo a Contratos Largos: Ofrecer mejoras de velocidad o servicios de streaming gratuitos a cambio de migrar de un contrato "Mes a Mes" a uno de 1 año.
-Promoción de Pagos Automáticos: Aplicar un pequeño descuento en la factura para incentivar el uso de Tarjeta de Crédito o Transferencia Automática, reduciendo la fricción mensual del pago.
-Soporte Proactivo: Dado que la falta de "Soporte Técnico" se asocia con el Churn, ofrecer este servicio de forma gratuita por tiempo limitado a clientes con facturas altas.
+Migración de Contratos: Implementar campañas de marketing para incentivar el paso de contratos mensuales a contratos de 1 o 2 años mediante descuentos exclusivos.
+Estrategia de Onboarding: Reforzar el servicio al cliente durante los primeros 90 días con llamadas de seguimiento o bonos de lealtad para reducir la fuga inicial.
+Automatización de Pagos: Promover el uso de Pago Automático (Tarjeta de Crédito/Débito), ya que esto reduce la "decisión consciente de pagar" cada mes y baja el Churn.
+Revisión de Precios en Fibra Óptica: Analizar si el costo de los planes de alta velocidad es competitivo, dado que los clientes de cargos altos son los que más se retiran.
